@@ -21,6 +21,8 @@ var ship = {
 };
 
 var stars = [];
+var shots = [];
+
 
 for (var i = 0; i <50; i++) {
     stars.push({
@@ -33,6 +35,10 @@ for (var i = 0; i <50; i++) {
 
 document.addEventListener("keydown", function(event) {
   keys[event.code] = true;
+
+  if (event.code ==="x") {
+    makeShot();
+  }
 });
 
 document.addEventListener("keyup", function(event) {
@@ -46,12 +52,12 @@ function updateText() {
 }
 
 function moveShip() {
-    if (keys["ArrowLeft"] && ship.x >0 ) {
+    if (keys["ArrowLeft"] && ship.x > 0) {
         ship.x = ship.x - ship.speed;
     }
 
     if (keys["ArrowRight"] && ship.x + ship.width < canvas.width) {
-    ship.x = ship.x + ship.speed;
+        ship.x = ship.x + ship.speed;
     }
 
     if (keys["ArrowUp"] && ship.y > 0) {
@@ -61,8 +67,37 @@ function moveShip() {
     if (keys["ArrowDown"] && ship.y + ship.height < canvas.height) {
         ship.y = ship.y + ship.speed;
     }
-
 }
+
+function makeShot() {
+  shots.push({
+    x: ship.x + ship.width / 2 - 3,
+    y: ship.y,
+    width: 6,
+    height: 14,
+    speed: 7
+  });
+}
+
+function moveShots() {
+    for (var i = shots.length - 1; i >=0; i--) {
+        shots[i].y = shots[i].y - shots[i].speed;
+
+        if (shots[i].y < -20) {
+            shots.splice(i, 1);
+        }
+    }
+}
+
+function drawShots() {
+    ctx.fillStyle = "yellow";
+
+    for (var i = 0; i < shots.length; i++) {
+       ctx.fillReact(shots[i].x, shots[i].y, shots[i].width, shots[i].height);
+    }
+}
+
+
 
 
 function drawBackground() {
@@ -101,14 +136,20 @@ function drawShip() {
 }
 
 function gameLoop() {
-    drawBackground();
-    moveShip();
-    drawShip();
-    updateText();
+  drawBackground();
 
-    requestAnimationFrame(gameLoop);
+  moveShip();
+  moveShots();
 
+  drawShip();
+  drawShots();
+
+  updateText();
+
+  requestAnimationFrame(gameLoop);
 }
+
+
 
 message.innerText = "Use arrow keys to move the shippp!!.";
 gameLoop();
