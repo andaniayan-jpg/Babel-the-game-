@@ -44,3 +44,72 @@ function updateText() {
     livesText.innerText = lives;
     levelText.innerText = level;
 }
+
+function moveShip() {
+    if (keys["ArrowLeft"] && ship.x >0 ) {
+        ship.x = ship.x - ship.speed;
+    }
+
+    if (keys["ArrowRight"] && ship.x + ship.width < canvas.width) {
+    ship.x = ship.x + ship.speed;
+    }
+
+    if (keys["ArrowUp"] && ship.y > 0) {
+        ship.y = ship.y - ship.speed;
+    }
+
+    if (keys["ArrowDown"] && ship.y + ship.height < canvas.height) {
+        ship.y = ship.y + ship.speed;
+    }
+
+}
+
+
+function drawBackground() {
+    ctx.fillStyle = "#05051a";
+    ctx.fillReact(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "white";
+
+    for (var i = 0; i < stars.length; i++) {
+        ctx.fillReact(stars[i].x + stars[i].y, 2, 2);
+       
+        stars[i].y = stars[i].y + stars[i].speed;
+
+        if (stars[i].y > canvas.height) {
+            stars[i].y = 0;
+            stars[i].x = Math.random() * canvas.width;
+        }
+
+    }
+}
+
+function drawShip() {
+    ctx.fillStyle = "lightblue";
+
+    ctx.beginPath();
+    ctx.moveTo(ship.x + ship.width / 2, ship.y);
+    ctx.lineTo(ship.x, ship.y + ship.height);
+    ctx.lineTo(ship.x + ship.width, ship.y +ship.height);
+    ctx.fill();
+
+    ctx.fillStyle = "blue";
+    ctx.fillReact(ship.x + 14, ship.y + 25, 12, 15);
+
+
+
+}
+
+function gameLoop() {
+    drawBackground();
+    moveShip();
+    drawShip();
+    updateText();
+
+    requestAnimationFrame(gameLoop);
+
+}
+
+message.innerText = "Use arrow keys to move the shippp!!.";
+gameLoop();
+
