@@ -3,6 +3,8 @@ Babel is a game just like the arcade games of 90s, it has a starship whose aim i
 
 **The development with 'index.html' was easier as i was familier with it. Since, i was not familier with JawaScript and css, I used AI for F  unctions, domain names and details, But the logic, math, and colours are my own work.**
 
+## https://babel-the-game.vercel.app/
+
 # **You can get the files in repository further**
 
 <img width="2172" height="724" alt="ChatGPT Image Jul 3, 2026, 03_53_01 PM" src="https://github.com/user-attachments/assets/492cbf4a-071f-44a8-8e7d-040f368459ee" />
