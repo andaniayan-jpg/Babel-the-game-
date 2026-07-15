@@ -1,7 +1,10 @@
 # Babel-the-game-
 Babel is a project for #horizons, it is a game just like the arcade games of 90s, it has a starship whose aim is to combat with the alient ships in front of it. It has impressive graphics and sound effects.
 
-**The development with 'index.html' was easier as i was familier with it. Since, i was not familier with JawaScript and css, I used AI for F  unctions, domain names and details, But the logic, math, and colours are my own work.**
+<img width="1901" height="967" alt="image" src="https://github.com/user-attachments/assets/fb044a8d-3b33-4c79-a0bc-cd391a977f79" />
+
+
+**The development with 'index.html' was easier as i was familier with it. Since, i was not familier with JawaScript and css, I used AI for Functions, domain names and details, But the logic, math, and colours are my own work.**
 
 ## https://babel-the-game.vercel.app/
 
